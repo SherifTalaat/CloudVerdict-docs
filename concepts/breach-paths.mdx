@@ -1,0 +1,35 @@
+---
+title: "Breach paths"
+description: "How findings chain together into routes an attacker could follow."
+---
+
+A breach path is a chain of findings that together give an attacker a route to something valuable, for example from an internet-facing server to credentials that can read your data.
+
+- We build paths with fixed rules from your actual configuration, never by guessing.
+- Our AI only writes the plain-language explanation of a path; it doesn't decide whether a path exists.
+- Fixing any one step in a path breaks it.
+
+## What a path shows
+
+Each path reads as **who** can start it, **through** which weakness, and what they **get**. The full story walks through each step in plain language, with the step that's best to fix first.
+
+## Path status
+
+| Status | What it means |
+|---|---|
+| **Exploitable** | Someone could follow this path today. |
+| **Mitigated** | Something in your account blocks the path today. The path shows what blocks it. |
+| **Couldn't verify** | We couldn't see enough to decide. The path says what was missing. |
+| **Confirmed by you** | You answered a question about your account that settles this path. |
+| **Not applicable (by you)** | You told us this path doesn't apply, for example because root access is controlled centrally by your AWS Organization. |
+
+## Types of path
+
+| Type | Example |
+|---|---|
+| Credentials | Console users without MFA, or old access keys someone could use. |
+| Public data | Storage or queues that anyone on the internet can read. |
+| Exposed compute | A server reachable from the internet on a sensitive port. |
+| Privilege escalation | An identity that can give itself more permissions. |
+| Secrets | Secret-looking values in configuration, such as function settings. |
+| Domain takeover | A DNS record pointing at something that no longer exists. |
