@@ -1,0 +1,32 @@
+---
+title: "What we can read"
+description: "The permissions the CloudVerdict roles have in your account, and what they can never do."
+---
+
+You connect an account by deploying our CloudFormation template. It creates two IAM roles in your account:
+
+| Role | Used for |
+|---|---|
+| Scanner role | Reading your configuration during scans. |
+| Cross-account role | Verifying the connection only. |
+
+## What the scanner role can do
+
+- Read configuration through the AWS managed **SecurityAudit** policy, plus a small set of extra read-only configuration permissions our checks need.
+- Nothing else. It has no permission to create, change or delete anything.
+
+## What it can never do
+
+The template explicitly **denies** reading the contents of your data, for example the objects in your S3 buckets. An explicit deny in IAM overrides any allow.
+
+## Who can use the roles
+
+Both roles trust only specific CloudVerdict platform roles, and only with the external ID unique to your connection. Nobody else can assume them, including other CloudVerdict customers.
+
+## Optional checks
+
+Some checks are off by default and need your opt-in on the account, for example looking for secret-looking values in Lambda function settings. When you turn one on, the values are checked in memory during the scan and never stored.
+
+## Removing access
+
+Delete the CloudFormation stack and the roles are gone. See [Connect your AWS account](/get-started/connect-aws#disconnecting-an-account).

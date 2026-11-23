@@ -1,0 +1,37 @@
+---
+title: "How CloudVerdict works"
+description: "What we look at in your AWS accounts, how we judge it, and how to check our work."
+---
+
+CloudVerdict reads the configuration of your AWS accounts through a read-only role you create. It checks that configuration against our security rules, then judges each problem in the context of your account: can someone actually use it today, or is it blocked by something else you have in place? The result is a short list of real risks, the attack paths that connect them, and a posture score you can track.
+
+## How a scan works
+
+<Steps>
+  <Step title="Connect">
+    You deploy our read-only role with a CloudFormation template. It can read configuration, not the contents of your data, and it can't change anything. See [Connect your AWS account](/get-started/connect-aws).
+  </Step>
+  <Step title="Scan">
+    We scan on your plan's schedule, and you can start a scan yourself at any time.
+  </Step>
+  <Step title="Check">
+    Every resource we find is checked against our rules.
+  </Step>
+  <Step title="Judge">
+    Each finding gets a verdict based on the rest of your account. See [Verdicts](/concepts/verdicts).
+  </Step>
+  <Step title="Connect the dots">
+    Findings that chain together into a route an attacker could follow become a breach path. See [Breach paths](/concepts/breach-paths).
+  </Step>
+  <Step title="Score">
+    Your posture score is updated from the open findings. See [Severity and posture score](/concepts/severity-and-score).
+  </Step>
+</Steps>
+
+## How long it's been open
+
+Where we can, a finding shows how long the problem has existed, and whether that date is exact or an estimate.
+
+## Where AI is used
+
+Verdicts, breach paths, severities and scores come from fixed rules applied to your actual configuration. Our AI only writes plain-language summaries and explanations; it never decides whether a finding is real, whether a path exists, or what your score is.

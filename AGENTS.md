@@ -18,12 +18,15 @@
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- Verdict labels, exactly: "Exposed now", "Not exposed today", "Not applicable here", "Couldn't verify", "Blind spot". Breach paths use "Exploitable".
+- "Breach path", not "attack path". "Posture score", not "security score".
+- "Accept risk" / "Accepted by your organization" (the API calls it suppressed; never say suppressed to customers).
+- Severity: Critical, High, Medium, Low (capitalised).
 
 ## Style preferences
 
-{/* Add any project-specific style rules below */}
+- No em dashes in customer text; use a normal hyphen or a new sentence.
+- Never name internal rule ids, table names, ARNs from our platform, or internal tools.
 
 - Use active voice and second person ("you")
 - Keep sentences concise — one idea per sentence
@@ -33,5 +36,6 @@
 
 ## Content boundaries
 
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+- Document the customer dashboard only. Never document Internal Admin / Admin Studio, detection internals, or how verdicts are computed beyond what's on the concept pages.
+- Customer-facing wording needs the owner's approval: open a PR, don't merge without it.
+- "What we check" pages are generated from the published catalog by a GitHub Action in the Carbon6 repo; don't edit them by hand.

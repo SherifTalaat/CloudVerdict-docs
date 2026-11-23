@@ -1,0 +1,33 @@
+---
+title: "Your first scan"
+description: "What a scan does, how often it runs, and where to start with the results."
+---
+
+## When scans run
+
+- **Automatically**, on your plan's schedule.
+- **On demand**, when you select **Scan now** on an account card. On-demand scans count towards your plan's limit.
+
+The first scan after you connect an account starts automatically and is free.
+
+## What a scan does
+
+A scan finds the resources in your account, checks each one against our rules, gives every finding a verdict, builds breach paths, and updates your posture score. [How CloudVerdict works](/concepts/how-it-works) explains each step.
+
+When a scan finishes you get an email summary (you can change this in **Settings → Notifications**).
+
+## Where to start
+
+<Steps>
+  <Step title="Breach paths">
+    Start with any path marked **Exploitable**. Fixing any one step breaks the path. See [Breach paths](/concepts/breach-paths).
+  </Step>
+  <Step title="Findings that are exposed now">
+    On **Security findings**, filter by the verdict **Exposed now**. These are the findings someone could use today.
+  </Step>
+  <Step title="The rest, by severity">
+    Then work through Critical and High findings. Findings that are **Not exposed today** still matter: the protection that blocks them can change.
+  </Step>
+</Steps>
+
+Results are as fresh as your last scan. If you fix something, the next scan confirms it and closes the finding.

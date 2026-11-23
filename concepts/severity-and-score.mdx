@@ -1,0 +1,35 @@
+---
+title: "Severity and posture score"
+description: "How severity is set and adjusted, and how your posture score is calculated."
+---
+
+## Severity
+
+Every check has a severity: **Critical**, **High**, **Medium** or **Low**. The verdict can adjust it for your account:
+
+- a finding that's **Not exposed today** counts one level lower;
+- a finding that's **Not applicable here** doesn't count.
+
+When we adjust it, the finding shows the original severity and why it changed. Remediation deadlines (SLAs) follow the adjusted severity.
+
+## Posture score
+
+Your posture score runs from 0 to 100. Each open finding adds weight by its adjusted severity:
+
+| Severity | Weight |
+|---|---|
+| Critical | 15 |
+| High | 8 |
+| Medium | 3 |
+| Low | 1 |
+
+The score falls quickly for the first problems and more slowly after that, so fixing a few serious findings moves it the most.
+
+- While any Critical finding is open, the score can't go above 70.
+- Findings your organization has accepted as a risk still count, because accepting a risk doesn't remove it.
+- Findings that are not applicable don't count.
+- Your organization's score is the average of your accounts' scores, with production accounts weighing more than non-production ones.
+
+## Framework scores
+
+The framework pages (for example CIS) use a different measure: the share of controls that passed, out of those we could evaluate.

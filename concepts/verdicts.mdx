@@ -1,0 +1,24 @@
+---
+title: "Verdicts"
+description: "Why a misconfiguration isn't always a risk, and what each verdict means."
+---
+
+A misconfiguration isn't always a risk. If a server has an open port but nothing can reach it, the setting is wrong but nobody can use it today. Each finding gets one of these verdicts:
+
+| Verdict | What it means |
+|---|---|
+| **Exposed now** | Someone could use this today. Fix these first. |
+| **Not exposed today** | The setting is wrong, but something else in your account blocks it for now. It's still worth fixing, because that protection can change. |
+| **Not applicable here** | The rule doesn't apply to how this resource is used. It doesn't count towards your score. |
+| **Couldn't verify** | We couldn't see enough to decide, so we treat it at its full severity until we can. The finding says what was missing. |
+| **Blind spot** | Logging or monitoring is off, so attacks here would go unnoticed. It counts towards your score, but it isn't an entry point on its own. |
+
+On breach paths, a path you could be attacked through today is marked **Exploitable**.
+
+## Why "Couldn't verify" counts in full
+
+When we can't see enough to decide, we assume the worst rather than hide a possible risk. The finding tells you what we couldn't see, so you can either give us that visibility or confirm the answer yourself.
+
+## How verdicts change severity
+
+A finding that's **Not exposed today** counts one severity level lower, and a finding that's **Not applicable here** doesn't count at all. See [Severity and posture score](/concepts/severity-and-score).

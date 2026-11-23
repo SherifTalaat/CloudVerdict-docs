@@ -1,0 +1,43 @@
+---
+title: "Connect your AWS account"
+description: "Deploy a read-only role in your AWS account with one CloudFormation stack, then let CloudVerdict verify it."
+---
+
+CloudVerdict reads your account through IAM roles you create in your own AWS account. You deploy them with a CloudFormation stack we provide. The roles can read configuration; they can't change anything and they can't read the contents of your data. See [What we can read](/security/permissions) for the details.
+
+## Before you start
+
+- You need permission to create IAM roles and CloudFormation stacks in the AWS account you want to connect.
+- Have the 12-digit AWS account ID ready.
+
+## Steps
+
+<Steps>
+  <Step title="Start the connection">
+    In the CloudVerdict dashboard, open **Cloud accounts** and select **Add account**, then choose **AWS**.
+  </Step>
+  <Step title="Enter the account details">
+    Enter the 12-digit account ID, a name you'll recognise, and the environment type (for example production or development). Production accounts weigh more in your organization's posture score.
+  </Step>
+  <Step title="Deploy the role">
+    Select the button to open AWS CloudFormation with the template pre-filled, review it, and create the stack. The stack creates two roles: one for scanning and one used only to verify the connection. Both trust only CloudVerdict, and only with the external ID shown in the wizard.
+  </Step>
+  <Step title="Verify">
+    When the stack shows `CREATE_COMPLETE`, return to the wizard and verify the connection. CloudVerdict checks that it can assume the role and read what it needs.
+  </Step>
+  <Step title="First scan">
+    Your first scan starts automatically. It doesn't count towards your plan's on-demand scan limit.
+  </Step>
+</Steps>
+
+<Tip>
+If you leave the wizard before finishing, the account card shows **Pending setup** with the remaining steps. You can pick up where you left off.
+</Tip>
+
+## Updating the template
+
+When we publish a new version of the role template, the account card tells you. Update the existing stack in CloudFormation with the new template; you don't need to reconnect the account.
+
+## Disconnecting an account
+
+Delete the CloudFormation stack in your AWS account first, so the roles are removed. Then remove the account in **Cloud accounts**. CloudVerdict checks that the stack is gone before it lets you remove the account, so no role is left behind that trusts us.
